@@ -11,7 +11,7 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class CourseSession implements java.io.Serializable {
 
-    private short id;
+    private Integer id;
     private Location location;
     private Date startDate;
     private Date endDate;
@@ -22,7 +22,7 @@ public class CourseSession implements java.io.Serializable {
     public CourseSession() {
     }
 
-    public CourseSession(short id, Location location, Date startDate, Date endDate,int max) {
+    public CourseSession(Integer id, Location location, Date startDate, Date endDate,int max) {
         this.id = id;
         this.location = location;
         this.startDate = startDate;
@@ -30,7 +30,7 @@ public class CourseSession implements java.io.Serializable {
         this.max = max;
     }
 
-    public CourseSession(short id, Location location, Date startDate, Date endDate,int max, Set clients, Course course) {
+    public CourseSession(Integer id, Location location, Date startDate, Date endDate,int max, Set clients, Course course) {
         this.id = id;
         this.location = location;
         this.startDate = startDate;
@@ -40,11 +40,11 @@ public class CourseSession implements java.io.Serializable {
         this.max = max;
     }
 
-    public short getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

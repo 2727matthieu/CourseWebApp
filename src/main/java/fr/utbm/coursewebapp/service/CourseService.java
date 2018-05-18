@@ -28,7 +28,7 @@ public class CourseService implements Serializable{
     }
 
     private List<Course> course;
-
+    
     public List<Course> getCourse() {
         return course;
     }
@@ -57,6 +57,7 @@ public class CourseService implements Serializable{
         HibernateCourseDAO hcd = new HibernateCourseDAO();
         return hcd.getAllCoursesAtDateHibernate(date);
     }
+    
     public List<CourseSession> getAllCourseSessions(String code) {
         HibernateCourseDAO hcd = new HibernateCourseDAO();
         return hcd.getAllCourseSessions(code);

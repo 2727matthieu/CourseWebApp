@@ -9,29 +9,29 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class Location implements java.io.Serializable {
 
-    private short id;
+    private Integer id;
     private String city;
     private Set courseSessions = new HashSet(0);
 
     public Location() {
     }
 
-    public Location(short id, String city) {
+    public Location(Integer id, String city) {
         this.id = id;
         this.city = city;
     }
 
-    public Location(short id, String city, Set courseSessions) {
+    public Location(Integer id, String city, Set courseSessions) {
         this.id = id;
         this.city = city;
         this.courseSessions = courseSessions;
     }
 
-    public short getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

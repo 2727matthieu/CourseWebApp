@@ -43,6 +43,14 @@ public class Course implements java.io.Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+    
+    public Set getCourseSessions() {
+        return courseSessions;
+    }
+
+    public void setCourseSessions(Set courseSessions) {
+        this.courseSessions = courseSessions;
+    }
 
     @Override
     public String toString() {

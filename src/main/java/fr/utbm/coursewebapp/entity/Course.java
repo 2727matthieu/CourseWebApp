@@ -1,6 +1,5 @@
 package fr.utbm.coursewebapp.entity;
 
-
 import java.util.HashSet;
 import java.util.Set;
 import javax.faces.bean.ApplicationScoped;
@@ -52,11 +51,10 @@ public class Course implements java.io.Serializable {
         this.courseSessions = courseSessions;
     }
     
-    
-
     @Override
     public String toString() {
-        return "Course{" + "code=" + code + ", title=" + title + ", coursession=" + courseSessions+'}';
+        return "Course{" + "code=" + code + ", title=" + title + ", courseSessions=" + courseSessions + '}';
     }
-
+    
+    
 }

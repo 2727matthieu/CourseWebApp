@@ -17,7 +17,7 @@
         <property name="endDate" type="date">
             <column name="END_DATE" length="7" not-null="true" />
         </property>
-        <property name="max" type="Integer">
+        <property name="max" type="java.lang.Integer">
             <column name="MAX" not-null="true" />
         </property>
         <set name="clients" table="CLIENT" inverse="true" lazy="true" fetch="select">

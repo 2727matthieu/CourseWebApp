@@ -12,12 +12,20 @@ import fr.utbm.coursewebapp.repository.HibernateCourseDAO;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name="courseService")
-@ApplicationScoped
+@SessionScoped
 public class CourseService implements Serializable{
+    
+    public CourseService(){
+        init();
+    }
+    
+    private synchronized void init(){
+        setCourse();
+    }
 
     private List<Course> course;
 
@@ -27,6 +35,7 @@ public class CourseService implements Serializable{
 
     public void setCourse() {
         this.course = getAllCoursesService();
+        System.out.println(course.toString());
     }
     
     public List<Course> getAllCoursesService() {

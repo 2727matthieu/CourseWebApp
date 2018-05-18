@@ -57,10 +57,6 @@ public class CourseService implements Serializable{
         return hcd.getAllCoursesAtDateHibernate(date);
     }
     
-    public List<CourseSession> getAllCourseSessions(String code) {
-        HibernateCourseDAO hcd = new HibernateCourseDAO();
-        return hcd.getAllCourseSessions(code);
-    }
     public Course getCourseByCode(String code) {
         HibernateCourseDAO hcd = new HibernateCourseDAO();
         return hcd.getCourseByCode(code);

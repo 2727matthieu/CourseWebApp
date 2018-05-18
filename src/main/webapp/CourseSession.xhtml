@@ -1,62 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ace="http://www.icefaces.org/icefaces/components">
+      >
 
     <ui:composition template="/WEB-INF/templates/template.xhtml">
-        <ui:param name="title" value="CourseSession list" />
-
+        <ui:param name="title" value="Course list" />
+    
         <ui:define name="header"><h:graphicImage library="images" name="icefaces.png"/></ui:define>
-
+    
         <!--
         <ui:define name="menu">
             <h:button outcome="jobApplicantPage" value="Job Applicant Page" />
         </ui:define>
         -->
-
+       
         <ui:define name="content">
-
-
-            <h:dataTable value="#{CourseSessionService.courseSession}"
-                         var="row">
+            <h:dataTable value="#{courseSessionService.courseSession}"
+                var="row">
                 <h:column>
-                    <f:facet name="header">Id</f:facet>
-                    <!--<ace:linkButton value="#{row.id}"
-                                    href="#{linkButton.staticNavigation}">
-                    </ace:linkButton>-->
-                    <h:link outcome="CourseSession?code=#{row.id}" value="#{row.id}"  includeViewParams="true" ></h:link>
+                    <f:facet name="header">CODE</f:facet>
+                        #{row.code}
                 </h:column>
-                <h:column>
-                    <f:facet name="header">Location</f:facet>
-                        #{row.location}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">startDate</f:facet>
-                        #{row.startDate}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">endDate</f:facet>
-                        #{row.endDate}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">max</f:facet>
-                        #{row.max}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Location</f:facet>
-                        #{row.location}
-                </h:column>
-                <!--<h:column>
-                    <f:facet name="header">COURSE SESSION</f:facet>
-                #{row.courseSessions}
-            </h:column>-->
+                
             </h:dataTable>
-
         </ui:define>
-
     </ui:composition>
 </html>

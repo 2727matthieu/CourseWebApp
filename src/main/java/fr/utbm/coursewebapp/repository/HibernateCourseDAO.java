@@ -16,7 +16,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-@SuppressWarnings( "deprecation" )
+
 public class HibernateCourseDAO {
 
     public List<Course> getAllCoursesHibernate() {
@@ -92,39 +92,6 @@ public class HibernateCourseDAO {
             }
         }
         return listCourseOK;
-    }
-
-    public List<CourseSession> getAllCourseSessions(String code) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("from Course as course where course.code=?");
-        query.setString(0, code);
-        Course c = (Course) query.uniqueResult();
-        List<CourseSession> list = new ArrayList<>();
-        for (Iterator it = c.getCourseSessions().iterator(); it.hasNext();) {
-            CourseSession cs = (CourseSession) it.next();
-            list.add(cs);
-        }
-
-        int i, j;
-        List<CourseSession> tab = list;
-
-        CourseSession temp = new CourseSession();
-
-        i = 0;
-        while (i < tab.size()) {
-            for (j = tab.size() - 1; j >= i + 1; j--) {
-
-                if (tab.get(j).getStartDate().compareTo(tab.get(j - 1).getStartDate()) > 0) {
-                    temp = tab.get(j);
-                    tab.set(j, tab.get(j - 1));
-                    tab.set(j - 1, temp);
-                }
-            }
-            i++;
-        }
-
-        return tab;
-
     }
 
     public Course getCourseByCode(String code) {

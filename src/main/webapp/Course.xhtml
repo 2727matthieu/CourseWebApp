@@ -5,7 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ace="http://www.icefaces.org/icefaces/components">
+      >
 
     <ui:composition template="/WEB-INF/templates/template.xhtml">
         <ui:param name="title" value="Course list" />
@@ -19,28 +19,21 @@
         -->
        
         <ui:define name="content">
-           
-
-                        <h:dataTable value="#{courseService.course}"
-                                     var="row">
-                            <h:column>
-                                <f:facet name="header">CODE</f:facet>
-                                <!--<ace:linkButton value="#{row.code}"
-                                                href="#{linkButton.staticNavigation}">
-                                </ace:linkButton>-->
-                                < outcome="CourseSession" value="#{row.code}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">TITLE</f:facet>
-                                #{row.title}
-                            </h:column>
-                            <!--<h:column>
-                                <f:facet name="header">COURSE SESSION</f:facet>
-                                #{row.courseSessions}
-                            </h:column>-->
-                        </h:dataTable>
-                 
+            <h:dataTable value="#{courseService.course}"
+                var="row">
+                <h:column>
+                    <f:facet name="header">CODE</f:facet>
+                    <a href="CourseSession?code=#{row.code}">#{row.code}</a> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">TITLE</f:facet>
+                        #{row.title}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CS</f:facet>
+                        #{row.courseSessions}
+                </h:column>
+            </h:dataTable>
         </ui:define>
-
     </ui:composition>
 </html>

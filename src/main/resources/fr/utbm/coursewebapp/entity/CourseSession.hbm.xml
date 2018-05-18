@@ -8,7 +8,7 @@
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="location" class="fr.utbm.lo54.entity.Location"  cascade="all">
+        <many-to-one name="location" class="fr.utbm.coursewebapp.entity.Location"  cascade="all">
             <column name="LOCATION_ID" not-null="true" />
         </many-to-one>
         <property name="startDate" type="date">
@@ -17,11 +17,17 @@
         <property name="endDate" type="date">
             <column name="END_DATE" length="7" not-null="true" />
         </property>
+        <property name="max" type="Integer">
+            <column name="MAX" not-null="true" />
+        </property>
         <set name="clients" table="CLIENT" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="COURSE_SESSION_ID" precision="4" scale="0" not-null="true" />
             </key>
             <one-to-many class="fr.utbm.coursewebapp.entity.Client" />
         </set>
+        <many-to-one name="course" class="fr.utbm.coursewebapp.entity.Course"  cascade="all">
+            <column name="COURSE_CODE" not-null="true" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

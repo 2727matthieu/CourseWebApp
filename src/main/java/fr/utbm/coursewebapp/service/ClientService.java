@@ -9,7 +9,11 @@ import fr.utbm.coursewebapp.entity.Client;
 import fr.utbm.coursewebapp.repository.HibernateClientDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
+@ManagedBean
+@ApplicationScoped
 public class ClientService {
 
     public void insertClientService(Client client) throws Exception {

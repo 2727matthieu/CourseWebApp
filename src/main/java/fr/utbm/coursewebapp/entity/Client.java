@@ -1,6 +1,10 @@
 package fr.utbm.coursewebapp.entity;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
+@ManagedBean
+@ApplicationScoped
 public class Client implements java.io.Serializable {
 
     private short id;

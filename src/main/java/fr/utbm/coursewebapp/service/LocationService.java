@@ -7,8 +7,11 @@ package fr.utbm.coursewebapp.service;
 
 import fr.utbm.coursewebapp.repository.HibernateLocationDAO;
 import java.util.List;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
-
+@ManagedBean
+@ApplicationScoped
 public class LocationService {
 
     public List<String> getAllLocationsService() {

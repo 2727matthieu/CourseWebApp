@@ -2,7 +2,11 @@ package fr.utbm.coursewebapp.entity;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
+@ManagedBean
+@ApplicationScoped
 public class Location implements java.io.Serializable {
 
     private short id;

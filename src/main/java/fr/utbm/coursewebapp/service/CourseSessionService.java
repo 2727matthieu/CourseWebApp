@@ -7,8 +7,11 @@ package fr.utbm.coursewebapp.service;
 
 import fr.utbm.coursewebapp.entity.CourseSession;
 import fr.utbm.coursewebapp.repository.HibernateCourseSessionDAO;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
-
+@ManagedBean
+@ApplicationScoped
 public class CourseSessionService {
     public CourseSession getCourseSessionById(int id) {
         HibernateCourseSessionDAO hcsd = new HibernateCourseSessionDAO();

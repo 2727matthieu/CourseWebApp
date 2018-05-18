@@ -96,9 +96,9 @@ public class CourseSession implements java.io.Serializable {
         this.max = max;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "CourseSession{" + "id=" + id + ", location=" + location + ", startDate=" + startDate + ", endDate=" + endDate + ", clients=" + clients + ", Course=" + course + '}';
+        return "CourseSession{" + "id=" + id + ", location=" + location + ", startDate=" + startDate + ", endDate=" + endDate + ", clients=" + clients + ", max=" + max + '}';
     }
 
 }

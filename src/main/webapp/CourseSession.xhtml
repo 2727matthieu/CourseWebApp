@@ -28,7 +28,7 @@
                     <!--<ace:linkButton value="#{row.id}"
                                     href="#{linkButton.staticNavigation}">
                     </ace:linkButton>-->
-                    <h:link outcome="CourseSession?code=#{row.id}" value="#{row.id}" />
+                    <h:link outcome="CourseSession?code=#{row.id}" value="#{row.id}"  includeViewParams="true" ></h:link>
                 </h:column>
                 <h:column>
                     <f:facet name="header">Location</f:facet>

@@ -35,7 +35,6 @@ public class CourseService implements Serializable{
 
     public void setCourse() {
         this.course = getAllCoursesService();
-        System.out.println(course.toString());
     }
     
     public List<Course> getAllCoursesService() {

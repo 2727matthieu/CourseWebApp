@@ -16,7 +16,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-
+@SuppressWarnings( "deprecation" )
 public class HibernateCourseDAO {
 
     public List<Course> getAllCoursesHibernate() {
@@ -27,6 +27,7 @@ public class HibernateCourseDAO {
         return listCourse;
     }
 
+    
     public List<Course> getAllCoursesHibernate(String motCle) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("from Course as course where upper(course.title) like  ?");

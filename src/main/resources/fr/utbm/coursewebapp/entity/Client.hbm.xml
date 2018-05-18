@@ -8,7 +8,7 @@
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="courseSession" class="fr.utbm.coursewebapp.entity.CourseSession" fetch="select">
+        <many-to-one name="courseSession" class="fr.utbm.coursewebapp.entity.CourseSession" fetch="select" lazy="false">
             <column name="COURSE_SESSION_ID" not-null="true" />
         </many-to-one>
         <property name="lastname" type="string">

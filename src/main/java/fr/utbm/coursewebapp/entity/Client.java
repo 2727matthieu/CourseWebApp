@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class Client implements java.io.Serializable {
 
-    private short id;
+    private Integer id;
     private CourseSession courseSession;
     private String lastname;
     private String firstname;
@@ -18,7 +18,7 @@ public class Client implements java.io.Serializable {
     public Client() {
     }
 
-    public Client(short id, CourseSession courseSession, String lastname, String firstname, String address, String phone) {
+    public Client(Integer id, CourseSession courseSession, String lastname, String firstname, String address, String phone) {
         this.id = id;
         this.courseSession = courseSession;
 
@@ -28,7 +28,7 @@ public class Client implements java.io.Serializable {
         this.phone = phone;
     }
 
-    public Client(short id, CourseSession courseSession, String lastname, String firstname, String address, String phone, String email) {
+    public Client(Integer id, CourseSession courseSession, String lastname, String firstname, String address, String phone, String email) {
         this.id = id;
         this.courseSession = courseSession;
         this.lastname = lastname;
@@ -38,11 +38,11 @@ public class Client implements java.io.Serializable {
         this.email = email;
     }
 
-    public short getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

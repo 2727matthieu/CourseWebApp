@@ -13,9 +13,11 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import javax.faces.bean.SessionScoped;
+
 
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class CourseSessionService {
     
     private List<CourseSession> courseSession;
@@ -26,15 +28,19 @@ public class CourseSessionService {
 
     public void setCourseSession(List<CourseSession> courseSession) {
         this.courseSession = courseSession;
+        System.out.println(courseSession.toString());
     }
     
-    private void _init() throws Exception {
+    public CourseSessionService(){
+        init();
+    }
+    
+    private synchronized void init(){
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ex = fc.getExternalContext();
         HttpServletRequest rq = (HttpServletRequest) ex.getRequest();
-        courseSession = new CourseService().getAllCourseSessions(rq.getParameter("code"));
-        
-        
+        System.out.println(rq.getParameter("code"));
+        setCourseSession(new CourseService().getAllCourseSessions(rq.getParameter("code"))); 
     }
     
     public CourseSession getCourseSessionById(int id) {

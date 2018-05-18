@@ -10,10 +10,7 @@ import fr.utbm.coursewebapp.repository.HibernateClientDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Eddie
- */
+
 public class ClientService {
 
     public void insertClientService(Client client) throws Exception {

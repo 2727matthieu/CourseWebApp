@@ -8,10 +8,7 @@ package fr.utbm.coursewebapp.service;
 import fr.utbm.coursewebapp.entity.CourseSession;
 import fr.utbm.coursewebapp.repository.HibernateCourseSessionDAO;
 
-/**
- *
- * @author Eddie
- */
+
 public class CourseSessionService {
     public CourseSession getCourseSessionById(int id) {
         HibernateCourseSessionDAO hcsd = new HibernateCourseSessionDAO();

@@ -12,10 +12,7 @@ import fr.utbm.coursewebapp.repository.HibernateCourseDAO;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Ali
- */
+
 public class CourseService {
 
     public List<Course> getAllCoursesService() {

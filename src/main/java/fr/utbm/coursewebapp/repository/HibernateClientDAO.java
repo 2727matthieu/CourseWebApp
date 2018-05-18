@@ -9,10 +9,7 @@ import fr.utbm.coursewebapp.entity.Client;
 import fr.utbm.coursewebapp.util.HibernateUtil;
 import org.hibernate.Session;
 
-/**
- *
- * @author Ali
- */
+
 public class HibernateClientDAO {
 
     public void insertClientHibernate(Client client) {

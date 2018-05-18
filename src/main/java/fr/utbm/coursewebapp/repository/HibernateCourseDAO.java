@@ -16,10 +16,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author Eddie
- */
+
 public class HibernateCourseDAO {
 
     public List<Course> getAllCoursesHibernate() {

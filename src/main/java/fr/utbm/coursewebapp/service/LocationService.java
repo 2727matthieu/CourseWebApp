@@ -8,10 +8,7 @@ package fr.utbm.coursewebapp.service;
 import fr.utbm.coursewebapp.repository.HibernateLocationDAO;
 import java.util.List;
 
-/**
- *
- * @author Eddie
- */
+
 public class LocationService {
 
     public List<String> getAllLocationsService() {

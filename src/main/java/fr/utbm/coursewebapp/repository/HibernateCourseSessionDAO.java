@@ -10,10 +10,7 @@ import fr.utbm.coursewebapp.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author Ali
- */
+
 public class HibernateCourseSessionDAO {
     
      public CourseSession getCourseSessionById(int id) {

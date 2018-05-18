@@ -13,10 +13,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author Ali
- */
+
 public class HibernateLocationDAO {
 
     public List<String> getAllLocationsHibernate() {

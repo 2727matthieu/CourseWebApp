@@ -6,15 +6,12 @@
 package fr.utbm.coursewebapp.service;
 
 import fr.utbm.coursewebapp.entity.CourseSession;
-import fr.utbm.coursewebapp.repository.HibernateCourseDAO;
 import fr.utbm.coursewebapp.repository.HibernateCourseSessionDAO;
 import java.io.Serializable;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
@@ -24,21 +21,32 @@ import javax.faces.bean.ViewScoped;
 public class CourseSessionService implements Serializable{
     
     private List<CourseSession> courseSession;
+    private String code;
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
     public List<CourseSession> getCourseSession() {
-        System.out.println("!!!!!!!!!!!!! 22222 !!!!!!!!!!!!!");
         return courseSession;
     }
 
     public void setCourseSession(List<CourseSession> courseSession) {
-        System.out.println("!!!!!!!!!!!!! 1111 !!!!!!!!!!!!!");
         this.courseSession = courseSession;
-        //System.out.println(courseSession.toString());
     }
     
     public CourseSessionService(){
-        System.out.println("!!!!!!!!!!!!! TEST !!!!!!!!!!!!!");
-        //setCourseSession(getAllCourseSessions(getParameter("code"))); 
+        init();
+    }
+    private synchronized void init() {
+        code = getParameter("code");
+        setCourseSession(getAllCourseSessions(getCode()));
+        for (CourseSession cs : courseSession) {
+            cs.setUse(cs.getClients().size());
+        }
     }
     
     public CourseSession getCourseSessionById(int id) {

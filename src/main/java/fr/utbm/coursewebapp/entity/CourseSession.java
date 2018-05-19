@@ -18,6 +18,15 @@ public class CourseSession implements java.io.Serializable {
     private int max;
     private Set clients = new HashSet(0);
     private Course course;
+    private Integer use;
+
+    public Integer getUse() {
+        return use;
+    }
+
+    public void setUse(Integer use) {
+        this.use = use;
+    }
 
     public CourseSession() {
     }
@@ -98,7 +107,7 @@ public class CourseSession implements java.io.Serializable {
 
      @Override
     public String toString() {
-        return "CourseSession{" + "id=" + id + ", location=" + location + ", startDate=" + startDate + ", endDate=" + endDate + ", clients=" + clients + ", max=" + max + '}';
+        return "CourseSession{" + "id=" + id + ", location=" + location + ", startDate=" + startDate + ", endDate=" + endDate + ", max=" + max + '}';
     }
 
 }

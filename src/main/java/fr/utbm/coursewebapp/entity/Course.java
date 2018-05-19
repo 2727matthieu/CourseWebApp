@@ -4,9 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class Course implements java.io.Serializable {
 
     private String code;

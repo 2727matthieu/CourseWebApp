@@ -22,9 +22,28 @@
             <h:dataTable value="#{courseSessionService.courseSession}"
                 var="row">
                 <h:column>
-                    <f:facet name="header">CODE</f:facet>
-                        #{row.code}
+                    <f:facet name="header">Id</f:facet>
+                        #{row.id}
                 </h:column>
+                <h:column>
+                    <f:facet name="header">Ville</f:facet>
+                        #{row.location.city}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">startDate</f:facet>
+                        #{row.startDate}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">endDate</f:facet>
+                        #{row.endDate}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Place restante</f:facet>
+                        #{row.use}/#{row.max}
+                </h:column>
+               
+                
+                
                 
             </h:dataTable>
         </ui:define>

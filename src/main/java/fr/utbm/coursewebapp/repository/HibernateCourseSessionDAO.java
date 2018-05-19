@@ -29,9 +29,9 @@ public class HibernateCourseSessionDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            String hql = "from CourseSession cs where cs.course = :code";
+            String hql = "from CourseSession cs where cs.course.code = :code";
             courseSessions = session.createQuery(hql).setParameter("code", code).list();
-            //session.getTransaction().commit();
+            session.getTransaction().commit();
         } catch (HibernateException he) {
             he.printStackTrace();
             if (session.getTransaction() != null) {

@@ -6,7 +6,6 @@
 package fr.utbm.coursewebapp.service;
 
 import fr.utbm.coursewebapp.entity.Course;
-import fr.utbm.coursewebapp.entity.CourseSession;
 import fr.utbm.coursewebapp.entity.Location;
 import fr.utbm.coursewebapp.repository.HibernateCourseDAO;
 import java.io.Serializable;

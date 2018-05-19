@@ -8,7 +8,7 @@
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="location" class="fr.utbm.coursewebapp.entity.Location"  cascade="all">
+        <many-to-one name="location" class="fr.utbm.coursewebapp.entity.Location" lazy="false" cascade="all">
             <column name="LOCATION_ID" not-null="true" />
         </many-to-one>
         <property name="startDate" type="date">
@@ -20,7 +20,7 @@
         <property name="max" type="java.lang.Integer">
             <column name="MAX" not-null="true" />
         </property>
-        <set name="clients" table="CLIENT" inverse="true" lazy="true" fetch="select">
+        <set name="clients" table="CLIENT" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="COURSE_SESSION_ID" precision="4" scale="0" not-null="true" />
             </key>

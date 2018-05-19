@@ -6,27 +6,55 @@
 package fr.utbm.coursewebapp.service;
 
 import fr.utbm.coursewebapp.entity.Client;
+import fr.utbm.coursewebapp.entity.CourseSession;
 import fr.utbm.coursewebapp.repository.HibernateClientDAO;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
-@ManagedBean
-@ApplicationScoped
+@ManagedBean(name="inscription")
+@ViewScoped
 public class ClientService implements Serializable{
+    
+    private Client client = new Client();
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
+    public ClientService(){
+        init();
+    }
+    
+    private synchronized void init(){
+        client.setCourseSession(new CourseSessionService().getCourseSessionById(Integer.parseInt(getParameter("id"))));
+    }
 
     public void insertClientService(Client client) throws Exception {
         HibernateClientDAO hcd = new HibernateClientDAO();
         hcd.insertClientHibernate(client);
-        
-        try {
-            hcd.insertClientHibernate(client);
-        } catch (Exception ex) {
-            Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
-            throw ex;
-        }
     }
+    
+    public void insertClientService(ActionEvent event){
+        HibernateClientDAO hcd = new HibernateClientDAO();
+        hcd.insertClientHibernate(client);
+    }
+    
+    public static String getParameter(String parameterName) {
+        String parameter = FacesContext.getCurrentInstance()
+            .getExternalContext().getRequestParameterMap()
+            .get(parameterName);
+        
+        return parameter;
+    }
+    
 
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+    <ui:composition template="/WEB-INF/templates/template.xhtml">
+        <ui:param name="title" value="Inscription Course Session" />
+    
+        <ui:define name="header"><h:graphicImage library="images" class="img-circle" name="icefaces.png"/></ui:define>
+    
+        <!--
+        <ui:define name="menu">
+            <h:button outcome="jobApplicantPage" value="Job Applicant Page" />
+        </ui:define>
+        -->
+       
+        <ui:define name="content">
+            <h:panelGrid columns="2">
+                <h:outputText value="Course session:"/>
+                <h:inputText value="#{inscription.client.courseSession}" disabled="true" required="true"/>
+                <h:outputText value="First Name:"/>
+                <h:inputText value="#{inscription.client.firstname}" required="true"/>
+                <h:outputText value="Last Name:"/>
+                <h:inputText value="#{inscription.client.lastname}" required="true"/>
+                <h:outputText value="Address:"/>
+                <h:inputText value="#{inscription.client.address}" required="true"/>
+                <h:outputText value="Phone:"/>
+                <h:inputText value="#{inscription.client.phone}" required="true"/>
+                <h:outputText value="Email:"/>
+                <h:inputText value="#{inscription.client.email}" required="true"/>
+                <h:commandButton type="submit" value="Add Student" 
+                                 actionListener="#{inscription.insertClientService}"/>
+                               <!-- <h:commandButton type="submit" value="Clear" action="#{registerManager.client.clear}"/>-->
+            </h:panelGrid>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -10,7 +10,7 @@
     <ui:composition template="/WEB-INF/templates/template.xhtml">
         <ui:param name="title" value="Course list" />
     
-        <ui:define name="header"><h:graphicImage library="images" name="icefaces.png"/></ui:define>
+        <ui:define name="header"><h:graphicImage library="images" class="img-circle" name="icefaces.png"/></ui:define>
     
         <!--
         <ui:define name="menu">
@@ -19,7 +19,7 @@
         -->
        
         <ui:define name="content">
-            <h:dataTable value="#{courseService.course}"
+            <h:dataTable class="table table-striped" value="#{courseService.course}"
                 var="row">
                 <h:column>
                     <f:facet name="header">CODE</f:facet>
@@ -29,10 +29,10 @@
                     <f:facet name="header">TITLE</f:facet>
                         #{row.title}
                 </h:column>
-                <h:column>
+                <!--<h:column>
                     <f:facet name="header">CS</f:facet>
                         #{row.courseSessions}
-                </h:column>
+                </h:column>-->
             </h:dataTable>
         </ui:define>
     </ui:composition>

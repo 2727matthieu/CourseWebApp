@@ -10,7 +10,7 @@
     <ui:composition template="/WEB-INF/templates/template.xhtml">
         <ui:param name="title" value="Course list" />
     
-        <ui:define name="header"><h:graphicImage library="images" name="icefaces.png"/></ui:define>
+        <ui:define name="header"><h:graphicImage library="images" class="img-circle" name="icefaces.png"/></ui:define>
     
         <!--
         <ui:define name="menu">
@@ -19,7 +19,7 @@
         -->
        
         <ui:define name="content">
-            <h:dataTable value="#{courseSessionService.courseSession}"
+            <h:dataTable class="table table-striped" value="#{courseSessionService.courseSession}"
                 var="row">
                 <h:column>
                     <f:facet name="header">Id</f:facet>
@@ -41,7 +41,10 @@
                     <f:facet name="header">Place restante</f:facet>
                         #{row.use}/#{row.max}
                 </h:column>
-               
+               <h:column>
+                    <f:facet name="header">S'inscrire</f:facet>
+                        <a href="inscription.xhtml?id=#{row.id}">Inscription</a> 
+                </h:column>
                 
                 
                 

@@ -10,7 +10,12 @@
     <ui:composition template="/WEB-INF/templates/template.xhtml">
         <ui:param name="title" value="Inscription Course Session" />
     
-        <ui:define name="header"><h:graphicImage library="images" class="img-circle" name="icefaces.png"/></ui:define>
+        <ui:define name="header">
+            <ul class="list-inline">
+                <li class="list-inline-item"><h:graphicImage library="images" class="img-circle" name="icefaces.png"/></li>
+                <li class="list-inline-item"><h2>Projet gestion inscription cours LO54 - P2018</h2></li>
+            </ul>
+        </ui:define>
     
         <!--
         <ui:define name="menu">

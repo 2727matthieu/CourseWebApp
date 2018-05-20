@@ -24,15 +24,19 @@
         -->
        
         <ui:define name="content">
-            <h:dataTable class="table table-striped" value="#{courseSessionService.courseSession}"
+            <h:dataTable class="table table-striped" value="#{locationService.courseSession}"
                 var="row">
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                         #{row.id}
                 </h:column>
                 <h:column>
+                    <f:facet name="header">Title Course</f:facet>
+                        #{row.course.title}
+                </h:column>
+                <h:column>
                     <f:facet name="header">Ville</f:facet>
-                         <a href="city.xhtml?city=#{row.location.city}">#{row.location.city}</a>
+                    <a href="city.xhtml?city=#{row.location.city}">#{row.location.city}</a>
                 </h:column>
                 <h:column>
                     <f:facet name="header">startDate</f:facet>
@@ -46,13 +50,10 @@
                     <f:facet name="header">Place restante</f:facet>
                         #{row.use}/#{row.max}
                 </h:column>
-               <h:column>
+                <h:column>
                     <f:facet name="header">S'inscrire</f:facet>
-                        <a href="inscription.xhtml?id=#{row.id}">Inscription</a> 
-                </h:column>
-                
-                
-                
+                    <a href="inscription.xhtml?id=#{row.id}">Inscription</a> 
+                </h:column>    
             </h:dataTable>
         </ui:define>
     </ui:composition>

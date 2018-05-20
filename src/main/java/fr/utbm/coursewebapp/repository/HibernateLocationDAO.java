@@ -5,11 +5,14 @@
  */
 package fr.utbm.coursewebapp.repository;
 
+import fr.utbm.coursewebapp.entity.Course;
+import fr.utbm.coursewebapp.entity.CourseSession;
 import fr.utbm.coursewebapp.entity.Location;
 import fr.utbm.coursewebapp.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -35,5 +38,35 @@ public class HibernateLocationDAO {
         }
 
         return listCities;
+    }
+    
+    List<CourseSession> courseSessions;
+    
+    public List<CourseSession> getAllCourseSessionsAtLocationHibernate(String location) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            String hql = "from CourseSession cs where cs.location.city = :location";
+            courseSessions = session.createQuery(hql).setParameter("location", location).list();
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            if (session.getTransaction() != null) {
+                try {
+                    session.getTransaction().rollback();
+                } catch (HibernateException he2) {
+                    he2.printStackTrace();
+                }
+            }
+        } finally {
+            if (session != null) {
+                try {
+                    session.close();
+                } catch (HibernateException he) {
+                    he.printStackTrace();
+                }
+            }
+        }
+        return courseSessions;
     }
 }

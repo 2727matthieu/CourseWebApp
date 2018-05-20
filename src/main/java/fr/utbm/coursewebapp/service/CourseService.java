@@ -46,11 +46,6 @@ public class CourseService implements Serializable{
         return hcd.getAllCoursesHibernate(motCle);
     }
 
-    public List<Course> getAllCoursesAtLocationService(Location location) {
-        HibernateCourseDAO hcd = new HibernateCourseDAO();
-        return hcd.getAllCoursesAtLocationHibernate(location);
-    }
-
     public List<Course> getAllCoursesAtDateService(Date date) throws Exception {
         HibernateCourseDAO hcd = new HibernateCourseDAO();
         return hcd.getAllCoursesAtDateHibernate(date);

@@ -6,11 +6,8 @@
 package fr.utbm.coursewebapp.service;
 
 import fr.utbm.coursewebapp.entity.Client;
-import fr.utbm.coursewebapp.entity.CourseSession;
 import fr.utbm.coursewebapp.repository.HibernateClientDAO;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -46,6 +43,7 @@ public class ClientService implements Serializable{
     public void insertClientService(ActionEvent event){
         HibernateClientDAO hcd = new HibernateClientDAO();
         hcd.insertClientHibernate(client);
+        client.clear();
     }
     
     public static String getParameter(String parameterName) {

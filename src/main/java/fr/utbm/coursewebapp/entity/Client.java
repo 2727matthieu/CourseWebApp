@@ -2,6 +2,7 @@ package fr.utbm.coursewebapp.entity;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.Transient;
 
 @ManagedBean
 @ApplicationScoped
@@ -97,6 +98,16 @@ public class Client implements java.io.Serializable {
     @Override
     public String toString() {
         return "Client{" + "id=" + id + ", courseSession=" + courseSession + ", lastname=" + lastname + ", firstname=" + firstname + ", address=" + address + ", phone=" + phone + ", email=" + email + '}';
+    }
+    
+    @Transient
+    public String clear(){
+        firstname="";
+        lastname="";
+        address="";
+        phone="";
+        email="";
+        return "clear";
     }
 
 }

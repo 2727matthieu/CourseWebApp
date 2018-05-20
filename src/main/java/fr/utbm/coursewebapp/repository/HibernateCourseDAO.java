@@ -64,36 +64,6 @@ public class HibernateCourseDAO {
         return listCourseOK;
     }
 
-    public List<Course> getAllCoursesAtLocationHibernate(Location location) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-
-        Query query = session.createQuery("from Course");
-        List<Course> listCourse = query.list();
-
-        List<Course> listCourseOK = new ArrayList<>();
-
-        for (Course c : listCourse) {
-            for (Iterator it = c.getCourseSessions().iterator(); it.hasNext();) {
-                CourseSession cs = (CourseSession) it.next();
-
-                if (cs.getLocation().getCity().equalsIgnoreCase(location.getCity())) {
-                    int count = 0;
-                    for (Course c2 : listCourseOK) {
-                        if (c2.equals(c)) {
-                            count++;
-                        }
-                    }
-
-                    if (count == 0) {
-                        listCourseOK.add(c);
-                    }
-
-                }
-            }
-        }
-        return listCourseOK;
-    }
-
     public Course getCourseByCode(String code) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("from Course as course where course.code=?");

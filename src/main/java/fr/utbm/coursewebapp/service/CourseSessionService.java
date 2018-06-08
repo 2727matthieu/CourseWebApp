@@ -46,6 +46,9 @@ public class CourseSessionService implements Serializable{
         setCourseSession(getAllCourseSessions(getCode()));
         for (CourseSession cs : courseSession) {
             cs.setUse(cs.getClients().size());
+            if (cs.getClients().size()<=cs.getMax()){
+                cs.setDisable("true");
+            }
         }
     }
     

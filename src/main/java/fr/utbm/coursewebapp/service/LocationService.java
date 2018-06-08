@@ -55,6 +55,9 @@ public class LocationService  implements Serializable{
         setCourseSession(getAllCoursesSessionAtLocationService(city));
         for (CourseSession cs : courseSession) {
             cs.setUse(cs.getClients().size());
+            if (cs.getClients().size()>=cs.getMax()){
+                cs.setDisable("true");
+            }
         }
     }
     

@@ -69,13 +69,24 @@ public class CourseSession implements Serializable {
 
     @Transient
     private Integer use;
+    @Transient
+    private String disable = "false";
 
+    
     public Integer getUse() {
         return use;
     }
 
     public void setUse(Integer use) {
         this.use = use;
+    }
+    
+    public String getDisable() {
+        return disable;
+    }
+
+    public void setDisable(String disable) {
+        this.disable = disable;
     }
     
     public CourseSession() {
@@ -151,6 +162,5 @@ public class CourseSession implements Serializable {
     @Override
     public String toString() {
         return "CourseSession{" + "id=" + id + ", location=" + location + ", startDate=" + startDate + ", endDate=" + endDate + ", max=" + max + '}';
-    }
-    
+    }    
 }

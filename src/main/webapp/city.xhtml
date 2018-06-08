@@ -5,6 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
       >
 
     <ui:composition template="/WEB-INF/templates/template.xhtml">
@@ -52,7 +53,18 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">S'inscrire</f:facet>
-                    <a href="inscription.xhtml?id=#{row.id}">Inscription</a> 
+                    <!--<a href="inscription.xhtml?id=#{row.id}" disable="">Inscription</a> -->
+                    <!--<ace:pushButton id="inscrire"
+                                    value="Inscription"
+                                    action="#{pushButton.executeAction}">
+                        <ace:ajax execute="@all" render="@all" onSuccess="updateAddressBarURL('ace:linkButton','Overview');" />
+                        <f:param name="#{showcaseMenu.urlParamGroup}" value="ace:linkButton"/>
+                        <f:param name="#{showcaseMenu.urlParamDemo}" value="Overview" />
+                    </ace:pushButton>-->
+                    <ace:linkButton id="linkBttnStatic"
+                                    value="Inscription" disabled="#{row.disable}"
+                                    href="inscription.xhtml?id=#{row.id}">
+                    </ace:linkButton>
                 </h:column>    
             </h:dataTable>
         </ui:define>

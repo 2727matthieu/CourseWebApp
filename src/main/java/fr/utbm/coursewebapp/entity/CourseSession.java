@@ -1,23 +1,73 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fr.utbm.coursewebapp.entity;
 
-
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
-@ManagedBean
-@ApplicationScoped
-public class CourseSession implements java.io.Serializable {
+/**
+ *
+ * @author matbo
+ */
+@Entity
+@Table(name = "COURSE_SESSION")
+@NamedQueries({
+    @NamedQuery(name = "CourseSession.findAll", query = "SELECT c FROM CourseSession c")})
+public class CourseSession implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID")
     private Integer id;
-    private Location location;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "START_DATE")
+    @Temporal(TemporalType.DATE)
     private Date startDate;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "END_DATE")
+    @Temporal(TemporalType.DATE)
     private Date endDate;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "MAX")
     private int max;
-    private Set clients = new HashSet(0);
+    @JoinColumn(name = "COURSE_CODE", referencedColumnName = "CODE")
+    @ManyToOne(optional = false)
     private Course course;
+    @JoinColumn(name = "LOCATION_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Location location;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "courseSession")
+    private Set<Client> clients  = new HashSet(0);
+
+    @Transient
     private Integer use;
 
     public Integer getUse() {
@@ -27,46 +77,31 @@ public class CourseSession implements java.io.Serializable {
     public void setUse(Integer use) {
         this.use = use;
     }
-
+    
     public CourseSession() {
     }
 
-    public CourseSession(Integer id, Location location, Date startDate, Date endDate,int max) {
+    public CourseSession(Integer id) {
         this.id = id;
-        this.location = location;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.max = max;
     }
 
-    public CourseSession(Integer id, Location location, Date startDate, Date endDate,int max, Set clients, Course course) {
+    public CourseSession(Integer id, Date startDate, Date endDate, int max) {
         this.id = id;
-        this.location = location;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.clients = clients;
-        this.course = course;
         this.max = max;
     }
 
     public Integer getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Location getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
     public Date getStartDate() {
-        return this.startDate;
+        return startDate;
     }
 
     public void setStartDate(Date startDate) {
@@ -74,29 +109,13 @@ public class CourseSession implements java.io.Serializable {
     }
 
     public Date getEndDate() {
-        return this.endDate;
+        return endDate;
     }
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public Set getClients() {
-        return this.clients;
-    }
-
-    public void setClients(Set clients) {
-        this.clients = clients;
-    }
-    
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-    
     public int getMax() {
         return max;
     }
@@ -105,9 +124,33 @@ public class CourseSession implements java.io.Serializable {
         this.max = max;
     }
 
-     @Override
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    @Override
     public String toString() {
         return "CourseSession{" + "id=" + id + ", location=" + location + ", startDate=" + startDate + ", endDate=" + endDate + ", max=" + max + '}';
     }
-
+    
 }

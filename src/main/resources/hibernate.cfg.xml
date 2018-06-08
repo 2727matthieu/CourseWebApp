@@ -18,9 +18,9 @@
     <property name="show_sql">false</property>
     <property name="format_sql">false</property>
     <property name="hbm2ddl.auto">update</property>
-    <mapping resource="fr/utbm/coursewebapp/entity/Location.hbm.xml"/>
-    <mapping resource="fr/utbm/coursewebapp/entity/Course.hbm.xml"/>
-    <mapping resource="fr/utbm/coursewebapp/entity/Client.hbm.xml"/>
-    <mapping resource="fr/utbm/coursewebapp/entity/CourseSession.hbm.xml"/>
+    <mapping class="fr.utbm.coursewebapp.entity.Location"/>
+    <mapping class="fr.utbm.coursewebapp.entity.Course"/>
+    <mapping class="fr.utbm.coursewebapp.entity.Client"/>
+    <mapping class="fr.utbm.coursewebapp.entity.CourseSession"/>
   </session-factory>
 </hibernate-configuration>

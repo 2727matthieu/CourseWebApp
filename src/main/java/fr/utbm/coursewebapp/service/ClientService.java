@@ -36,14 +36,21 @@ public class ClientService implements Serializable{
     }
 
     public void insertClientService(Client client) throws Exception {
+        //FacesContext.getCurrentInstance().getExternalContext().redirect("CourseSession.xhtml?code =" + client.getCourseSession().getId());
         HibernateClientDAO hcd = new HibernateClientDAO();
         hcd.insertClientHibernate(client);
+        //FacesContext.getCurrentInstance().getExternalContext().redirect("CourseSession.xhtml?code ="+client.getCourseSession().getId());
+        //return "CourseSession.xhtml?faces-redirect=true";
     }
     
     public void insertClientService(ActionEvent event){
         HibernateClientDAO hcd = new HibernateClientDAO();
         hcd.insertClientHibernate(client);
         client.clear();
+    }
+    
+    public String redirect(){
+        return "CourseSession.xhtml?code="+client.getCourseSession().getCourse().getCode()+"&faces-redirect=true";
     }
     
     public static String getParameter(String parameterName) {

@@ -8,7 +8,7 @@
     <class>fr.utbm.coursewebapp.entity.CourseSession</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://37.187.54.157:3306/lo54"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://37.187.54.157:3306/lo54?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="lo54"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="lo54"/>

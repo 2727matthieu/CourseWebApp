@@ -26,19 +26,19 @@
         <ui:define name="content">
             <h:panelGrid columns="2">
                 <h:outputText value="Course session:"/>
-                <h:inputText value="#{inscription.client.courseSession}" disabled="true" required="true"/>
+                <h:inputText id="cs" value="#{inscription.client.courseSession.course.title}" disabled="true" required="true" size="#{inscription.client.courseSession.course.title.length()}"/>
                 <h:outputText value="First Name:"/>
-                <h:inputText value="#{inscription.client.firstname}" required="true"/>
+                <h:inputText id="firstname"  value="#{inscription.client.firstname}" required="true"/>
                 <h:outputText value="Last Name:"/>
-                <h:inputText value="#{inscription.client.lastname}" required="true"/>
+                <h:inputText id="lastname"  value="#{inscription.client.lastname}" required="true"/>
                 <h:outputText value="Address:"/>
-                <h:inputText value="#{inscription.client.address}" required="true"/>
+                <h:inputText id="address"  value="#{inscription.client.address}" required="true"/>
                 <h:outputText value="Phone:"/>
-                <h:inputText value="#{inscription.client.phone}" required="true"/>
+                <h:inputText id="phone"  value="#{inscription.client.phone}" required="true"/>
                 <h:outputText value="Email:"/>
-                <h:inputText value="#{inscription.client.email}" required="true"/>
-                <h:commandButton type="submit" value="Add Student" 
-                                 actionListener="#{inscription.insertClientService}"/>
+                <h:inputText id="email"  value="#{inscription.client.email}" required="true"/>
+                <h:commandButton type="submit" value="Add Student"
+                                 actionListener="#{inscription.insertClientService}" action="#{inscription.redirect}"/>
                                <!-- <h:commandButton type="submit" value="Clear" action="#{registerManager.client.clear}"/>-->
             </h:panelGrid>
         </ui:define>

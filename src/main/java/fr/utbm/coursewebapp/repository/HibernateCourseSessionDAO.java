@@ -7,6 +7,9 @@ package fr.utbm.coursewebapp.repository;
 
 import fr.utbm.coursewebapp.entity.CourseSession;
 import fr.utbm.coursewebapp.util.HibernateUtil;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -52,6 +55,37 @@ public class HibernateCourseSessionDAO {
         }
         return courseSessions;
 
+    }
+    
+    public List<CourseSession> getAllCoursesSessionsHibernate(String motCle) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery("from CourseSession cs where upper(cs.course.title) like  ?");
+        query.setString(0, "%" + motCle.toUpperCase() + "%");
+        List<CourseSession> listCourse = query.list();
+        return listCourse;
+    }
+    
+    public List<CourseSession> getAllCoursesSessionsDate(Date date){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Query query = session.createQuery("from CourseSession cs where cs.startDate <=  ? and cs.endDate >=  ?");
+        query.setParameter(0, date);
+        query.setParameter(1, date);
+        List<CourseSession> listCourse = query.list();
+        
+        return listCourse;
+    }
+    
+    public List<CourseSession> getAllCoursesSessionsDateCode(Date date,String code){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Query query = session.createQuery("from CourseSession cs where cs.startDate <=  ? and cs.endDate >=  ? and upper(cs.course.title) like  ?");
+        query.setParameter(0, date);
+        query.setParameter(1, date);
+        query.setParameter(2, "%" + code.toUpperCase() + "%");
+        List<CourseSession> listCourse = query.list();
+        
+        return listCourse;
     }
     
 }

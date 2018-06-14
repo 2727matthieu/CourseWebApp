@@ -5,6 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
       >
 
     <ui:composition template="/WEB-INF/templates/template.xhtml">
@@ -14,16 +15,147 @@
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="./../CourseWebApp/"><h:graphicImage library="images" class="img-circle" name="icefaces.png"/></a></li>
                 <li class="list-inline-item"><h2>Projet gestion inscription cours LO54 - P2018</h2></li>
+                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: right;float: right;margin-top: 20px;">Search</button>
             </ul>
         </ui:define>
-    
-        <!--
-        <ui:define name="menu">
-            <h:button outcome="jobApplicantPage" value="Job Applicant Page" />
-        </ui:define>
-        -->
-       
+        
         <ui:define name="content">
+            <style>
+
+                /* Full-width input fields */
+                input[type=text], input[type=password] {
+                    width: 100%;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    box-sizing: border-box;
+                }
+
+                /* Set a style for all buttons */
+                button {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 14px 20px;
+                    margin: 8px 0;
+                    border: none;
+                    cursor: pointer;
+                    width: 100%;
+                }
+
+                button:hover {
+                    opacity: 0.8;
+                }
+
+                /* Extra styles for the cancel button */
+                .cancelbtn {
+                    width: auto;
+                    padding: 10px 18px;
+                    background-color: #f44336;
+                }
+
+               
+                .container {
+                    padding: 16px;
+                }
+
+                span.psw {
+                    float: right;
+                    padding-top: 16px;
+                }
+
+                /* The Modal (background) */
+                .modal {
+                    display: none; /* Hidden by default */
+                    position: fixed; /* Stay in place */
+                    z-index: 1; /* Sit on top */
+                    left: 0;
+                    top: 0;
+                    width: 100%; /* Full width */
+                    height: 100%; /* Full height */
+                    overflow: auto; /* Enable scroll if needed */
+                    background-color: rgb(0,0,0); /* Fallback color */
+                    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                    padding-top: 60px;
+                }
+
+                /* Modal Content/Box */
+                .modal-content {
+                    background-color: #fefefe;
+                    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+                    border: 1px solid #888;
+                    width: 80%; /* Could be more or less, depending on screen size */
+                }
+
+                /* The Close Button (x) */
+                .close {
+                    position: absolute;
+                    right: 25px;
+                    top: 0;
+                    color: #000;
+                    font-size: 35px;
+                    font-weight: bold;
+                }
+
+                .close:hover,
+                .close:focus {
+                    color: red;
+                    cursor: pointer;
+                }
+
+                /* Add Zoom Animation */
+                .animate {
+                    -webkit-animation: animatezoom 0.6s;
+                    animation: animatezoom 0.6s
+                }
+
+                @-webkit-keyframes animatezoom {
+                    from {-webkit-transform: scale(0)} 
+                    to {-webkit-transform: scale(1)}
+                }
+
+                @keyframes animatezoom {
+                    from {transform: scale(0)} 
+                    to {transform: scale(1)}
+                }
+
+                /* Change styles for span and cancel button on extra small screens */
+                @media screen and (max-width: 300px) {
+                    span.psw {
+                       display: block;
+                       float: none;
+                    }
+                    .cancelbtn {
+                       width: 100%;
+                    }
+                }
+                </style>
+                
+            <div id="id01" class="modal">
+                <h:form id="form" class="modal-content animate">
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  </div>
+
+                  <div class="container" style="background-color:#f1f1f1">
+                      <h:outputText value="Nom du cours : "/><b></b>
+                    <h:inputText id="name"  value="#{search.name}"/>
+                    <h:outputText value="Nom du cours : "/><b></b>
+                    <ace:dateTimeEntry id="cal"
+                                   value="#{search.selectedDate}"
+                                   timeZone="Europe/Paris"
+                                   pattern="dd/MM/yyyy"
+                                   navigator="search.enable">
+                    </ace:dateTimeEntry>
+                    <h:commandButton class="button" type="submit" value="Rechercher"
+                                 action="#{search.redirect}"/>  <!--actionListener="#{search.searchvalue}"-->
+                  </div>
+
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annulé</button>
+                  </div>
+                </h:form>
+            </div>
             <h:dataTable class="table table-striped" value="#{courseService.course}"
                 var="row">
                 <h:column>

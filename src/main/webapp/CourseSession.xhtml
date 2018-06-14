@@ -18,11 +18,6 @@
             </ul>
         </ui:define>
     
-        <!--
-        <ui:define name="menu">
-            <h:button outcome="jobApplicantPage" value="Job Applicant Page" />
-        </ui:define>
-        -->
        
         <ui:define name="content">
             <h:dataTable class="table table-striped" value="#{courseSessionService.courseSession}"
@@ -30,6 +25,10 @@
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                         #{row.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Cours</f:facet>
+                        #{row.course.title}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Ville</f:facet>

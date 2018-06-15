@@ -27,49 +27,4 @@ public class HibernateCourseDAO {
         return listCourse;
     }
 
-    
-    public List<Course> getAllCoursesHibernate(String motCle) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("from Course as course where upper(course.title) like  ?");
-        query.setString(0, "%" + motCle.toUpperCase() + "%");
-        List<Course> listCourse = query.list();
-        return listCourse;
-    }
-
-    public List<Course> getAllCoursesAtDateHibernate(Date date) throws Exception {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-
-        Query query = session.createQuery("from Course");
-        List<Course> listCourse = query.list();
-
-        List<Course> listCourseOK = new ArrayList<>();
-
-        for (Course c : listCourse) {
-            for (Iterator it = c.getCourseSessions().iterator(); it.hasNext();) {
-                CourseSession cs = (CourseSession) it.next();
-                if (date.before(cs.getStartDate())) {
-                    int count = 0;
-                    for (Course c2 : listCourseOK) {
-                        if (c2.equals(c)) {
-                            count++;
-                        }
-                    }
-
-                    if (count == 0) {
-                        listCourseOK.add(c);
-                    }
-                }
-            }
-        }
-        return listCourseOK;
-    }
-
-    public Course getCourseByCode(String code) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("from Course as course where course.code=?");
-        query.setString(0, code);
-        Course c = (Course) query.uniqueResult();
-        return c;
-    }
-
 }
